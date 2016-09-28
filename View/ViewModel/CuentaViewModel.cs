@@ -8,6 +8,10 @@ namespace View.ViewModel
 {
     public class CuentaViewModel
     {
+        public CuentaViewModel(string p)
+        {
+
+        }
        
       public CuentaViewModel()
         {
