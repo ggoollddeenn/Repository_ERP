@@ -12,5 +12,7 @@ namespace View.ViewModel
         {
 
         }
+
+        public int campo { get; set; }
     }
 }
