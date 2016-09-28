@@ -9,7 +9,12 @@ namespace View.ViewModel
     public class CuentaViewModel
     {
        
+      public CuentaViewModel()
+        {
 
+        }
 
     }
+
+
 }
