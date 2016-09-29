@@ -7,7 +7,7 @@ using Model;
 using System.ComponentModel;
 
 namespace View.ViewModel
-{
+{ 
     public class ArticuloViewModel : INotifyPropertyChanged
     {
         ARTICULO Model;
