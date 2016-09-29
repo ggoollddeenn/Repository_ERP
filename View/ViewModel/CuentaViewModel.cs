@@ -14,7 +14,8 @@ namespace View.ViewModel
 
         public CuentaViewModel(string p)
         {
-
+            //Asignamos un valor editando la clase desde vía web.
+            var1 = p;
         }
        
       public CuentaViewModel()
