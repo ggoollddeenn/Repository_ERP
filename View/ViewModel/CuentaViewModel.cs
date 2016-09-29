@@ -19,9 +19,9 @@ namespace View.ViewModel
         }
        
       public CuentaViewModel()
-        {
+      {
 
-        }
+      }
 
     }
 
