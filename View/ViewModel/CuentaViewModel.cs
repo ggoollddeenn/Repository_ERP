@@ -8,6 +8,9 @@ namespace View.ViewModel
 {
     public class CuentaViewModel
     {
+        public String var1;
+        public int campo { get; set; }
+
         public CuentaViewModel(string p)
         {
 
@@ -20,8 +23,4 @@ namespace View.ViewModel
 
     }
 
-
-
-        public int campo { get; set; }
-    }
 }
