@@ -70,7 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ArticuloViewModel.cs" />
     <Compile Include="ViewModel\CuentaViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
