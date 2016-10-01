@@ -32,5 +32,7 @@ namespace Model
         public DbSet<UNIDAD_MEDIDA> UNIDAD_MEDIDA { get; set; }
         public DbSet<VENTA_DETALLE> VENTA_DETALLE { get; set; }
         public DbSet<CODIGO_ARTICULO> CODIGO_ARTICULO { get; set; }
+        public DbSet<CLIENTE> CLIENTE { get; set; }
+        public DbSet<TIPO_CLIENTE> TIPO_CLIENTE { get; set; }
     }
 }

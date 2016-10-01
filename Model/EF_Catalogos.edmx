@@ -23,6 +23,33 @@
           <Property Name="FECHA_ACTUALIZACION" Type="datetime" Nullable="false" />
           <Property Name="ID_USUARIO_ACTUALIZACION" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_TIPO_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="RAZON_SOCIAL" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RFC" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO_EXTERIOR" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NUMERO_INTERIOR" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CODIGO_POSTAL" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="COLONIA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TIPO_COLONIA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LIMITE_CREDITO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="PLAZO" Type="int" Nullable="false" />
+          <Property Name="CUENTA_CORTADA" Type="int" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="OBSERVACIONES" Type="text" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="ID_USUARIO_CREACION" Type="int" Nullable="false" />
+          <Property Name="FECHA_ACTUALIZACION" Type="datetime" Nullable="false" />
+          <Property Name="ID_USUARIO_ACTUALIZACION" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="CODIGO_ARTICULO">
           <Key>
             <PropertyRef Name="ID_CODIGO_ARTICULO" />
@@ -59,6 +86,17 @@
           <Property Name="ID_USUARIO_CREACION" Type="int" Nullable="false" />
           <Property Name="FECHA_ACTUALIZACION" Type="datetime" Nullable="false" />
           <Property Name="ID_USUARIO_ACTUALIZACION" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_TIPO_CLIENTE" />
+          </Key>
+          <Property Name="ID_TIPO_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBEE_" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="ID_EMPLEADO_CREACION" Type="int" Nullable="false" />
+          <Property Name="FECHA_ACTUALIZACION" Type="datetime" Nullable="false" />
+          <Property Name="ID_EMPLEDO_ACTUALIZACION" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UNIDAD_MEDIDA">
           <Key>
@@ -144,6 +182,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TIPO_CLIENTE">
+          <End Role="TIPO_CLIENTE" Type="Self.TIPO_CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CLIENTE">
+              <PropertyRef Name="ID_TIPO_CLIENTE" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_TIPO_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_VENTA_DETALLE_ARTICULO">
           <End Role="ARTICULO" Type="Self.ARTICULO" Multiplicity="0..1" />
           <End Role="VENTA_DETALLE" Type="Self.VENTA_DETALLE" Multiplicity="*" />
@@ -158,10 +208,12 @@
         </Association>
         <EntityContainer Name="BD_VENTAModelStoreContainer">
           <EntitySet Name="ARTICULO" EntityType="Self.ARTICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CODIGO_ARTICULO" EntityType="Self.CODIGO_ARTICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ESTATUS_ARTICULO" EntityType="Self.ESTATUS_ARTICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IMPUESTO_ARTICULO" EntityType="Self.IMPUESTO_ARTICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LINEA" EntityType="Self.LINEA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_CLIENTE" EntityType="Self.TIPO_CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENTA_DETALLE" EntityType="Self.VENTA_DETALLE" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ARTICULO_UNIDAD_MEDIDA" Association="Self.FK_ARTICULO_UNIDAD_MEDIDA">
@@ -183,6 +235,10 @@
           <AssociationSet Name="FK_LINEA" Association="Self.FK_LINEA">
             <End Role="LINEA" EntitySet="LINEA" />
             <End Role="ARTICULO" EntitySet="ARTICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIPO_CLIENTE" Association="Self.FK_TIPO_CLIENTE">
+            <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_VENTA_DETALLE_ARTICULO" Association="Self.FK_VENTA_DETALLE_ARTICULO">
             <End Role="ARTICULO" EntitySet="ARTICULO" />
@@ -366,6 +422,12 @@
             <End Role="ARTICULO" EntitySet="ARTICULO" />
             <End Role="CODIGO_ARTICULO" EntitySet="CODIGO_ARTICULO" />
           </AssociationSet>
+          <EntitySet Name="CLIENTE" EntityType="BD_VENTAModel.CLIENTE" />
+          <EntitySet Name="TIPO_CLIENTE" EntityType="BD_VENTAModel.TIPO_CLIENTE" />
+          <AssociationSet Name="FK_TIPO_CLIENTE" Association="BD_VENTAModel.FK_TIPO_CLIENTE">
+            <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CODIGO_ARTICULO">
           <Key>
@@ -386,6 +448,58 @@
             </Principal>
             <Dependent Role="CODIGO_ARTICULO">
               <PropertyRef Name="ID_ARTICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_TIPO_CLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="RAZON_SOCIAL" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_EXTERIOR" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_INTERIOR" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_POSTAL" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="COLONIA" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_COLONIA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LIMITE_CREDITO" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="PLAZO" Type="Int32" Nullable="false" />
+          <Property Name="CUENTA_CORTADA" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OBSERVACIONES" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_USUARIO_CREACION" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_ACTUALIZACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_USUARIO_ACTUALIZACION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TIPO_CLIENTE" Relationship="BD_VENTAModel.FK_TIPO_CLIENTE" FromRole="CLIENTE" ToRole="TIPO_CLIENTE" />
+        </EntityType>
+        <EntityType Name="TIPO_CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_TIPO_CLIENTE" />
+          </Key>
+          <Property Name="ID_TIPO_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBEE_" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_EMPLEADO_CREACION" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_ACTUALIZACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_EMPLEDO_ACTUALIZACION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="BD_VENTAModel.FK_TIPO_CLIENTE" FromRole="TIPO_CLIENTE" ToRole="CLIENTE" />
+        </EntityType>
+        <Association Name="FK_TIPO_CLIENTE">
+          <End Type="BD_VENTAModel.TIPO_CLIENTE" Role="TIPO_CLIENTE" Multiplicity="1" />
+          <End Type="BD_VENTAModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CLIENTE">
+              <PropertyRef Name="ID_TIPO_CLIENTE" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="ID_TIPO_CLIENTE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -478,6 +592,46 @@
                 <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
                 <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
                 <ScalarProperty Name="ID_CODIGO_ARTICULO" ColumnName="ID_CODIGO_ARTICULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="BD_VENTAModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_USUARIO_ACTUALIZACION" ColumnName="ID_USUARIO_ACTUALIZACION" />
+                <ScalarProperty Name="FECHA_ACTUALIZACION" ColumnName="FECHA_ACTUALIZACION" />
+                <ScalarProperty Name="ID_USUARIO_CREACION" ColumnName="ID_USUARIO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CUENTA_CORTADA" ColumnName="CUENTA_CORTADA" />
+                <ScalarProperty Name="PLAZO" ColumnName="PLAZO" />
+                <ScalarProperty Name="LIMITE_CREDITO" ColumnName="LIMITE_CREDITO" />
+                <ScalarProperty Name="TIPO_COLONIA" ColumnName="TIPO_COLONIA" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="CODIGO_POSTAL" ColumnName="CODIGO_POSTAL" />
+                <ScalarProperty Name="NUMERO_INTERIOR" ColumnName="NUMERO_INTERIOR" />
+                <ScalarProperty Name="NUMERO_EXTERIOR" ColumnName="NUMERO_EXTERIOR" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="RAZON_SOCIAL" ColumnName="RAZON_SOCIAL" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_TIPO_CLIENTE" ColumnName="ID_TIPO_CLIENTE" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_CLIENTE">
+            <EntityTypeMapping TypeName="BD_VENTAModel.TIPO_CLIENTE">
+              <MappingFragment StoreEntitySet="TIPO_CLIENTE">
+                <ScalarProperty Name="ID_EMPLEDO_ACTUALIZACION" ColumnName="ID_EMPLEDO_ACTUALIZACION" />
+                <ScalarProperty Name="FECHA_ACTUALIZACION" ColumnName="FECHA_ACTUALIZACION" />
+                <ScalarProperty Name="ID_EMPLEADO_CREACION" ColumnName="ID_EMPLEADO_CREACION" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBEE_" ColumnName="NOMBEE_" />
+                <ScalarProperty Name="ID_TIPO_CLIENTE" ColumnName="ID_TIPO_CLIENTE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

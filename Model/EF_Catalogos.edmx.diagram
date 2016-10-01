@@ -18,6 +18,9 @@
         <AssociationConnector Association="BD_VENTAModel.FK_VENTA_DETALLE_ARTICULO" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BD_VENTAModel.CODIGO_ARTICULO" Width="3.625" PointX="7.5" PointY="9" />
         <AssociationConnector Association="BD_VENTAModel.FK_CODIGO_ARTICULO_ARTICULO1" />
+        <EntityTypeShape EntityType="BD_VENTAModel.CLIENTE" Width="1.5" PointX="12.625" PointY="1.125" />
+        <EntityTypeShape EntityType="BD_VENTAModel.TIPO_CLIENTE" Width="1.5" PointX="10.375" PointY="2.625" />
+        <AssociationConnector Association="BD_VENTAModel.FK_TIPO_CLIENTE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
