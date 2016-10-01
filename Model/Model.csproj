@@ -82,6 +82,9 @@
       <DependentUpon>EF_Catalogos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PROVEEDOR.cs">
+      <DependentUpon>EF_Catalogos.tt</DependentUpon>
+    </Compile>
     <Compile Include="TIPO_CLIENTE.cs">
       <DependentUpon>EF_Catalogos.tt</DependentUpon>
     </Compile>

@@ -34,5 +34,6 @@ namespace Model
         public DbSet<CODIGO_ARTICULO> CODIGO_ARTICULO { get; set; }
         public DbSet<CLIENTE> CLIENTE { get; set; }
         public DbSet<TIPO_CLIENTE> TIPO_CLIENTE { get; set; }
+        public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
     }
 }

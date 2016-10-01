@@ -6,8 +6,8 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="3300" Width="9750">
     <Grid>
-        
+
     </Grid>
 </Controls:MetroWindow>
