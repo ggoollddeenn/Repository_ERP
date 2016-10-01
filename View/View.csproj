@@ -78,10 +78,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="obj\Debug\App.g.i.cs" />
+    <Compile Include="obj\Debug\MainWindow.g.i.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Debug\View_Content.g.i.cs" />
+    <Compile Include="obj\Debug\Window1.g.i.cs" />
     <Compile Include="ViewModel\ArticuloViewModel.cs" />
+    <Compile Include="ViewModel\CodigoArticuloViewModel.cs" />
     <Compile Include="ViewModel\CuentaViewModel.cs" />
+    <Compile Include="ViewModel\ImpuestoArticuloViewModel.cs" />
     <Compile Include="ViewModel\LineaViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\UnidadMedidaViewModel.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -120,6 +130,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\View.exe.config" />
+    <None Include="bin\Debug\View.vshost.exe.config" />
+    <None Include="bin\Debug\View.vshost.exe.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -147,6 +160,9 @@
       <Project>{b6df4778-618f-4ea3-bafc-f8ff4ca10674}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\View.vshost.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
